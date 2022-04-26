@@ -1,0 +1,15 @@
+<p>
+  <strong>Project name</strong>
+  <%= @project.name %>
+</p>
+
+<h2>Bugs</h2>
+<% for bug in @project.bugs %>
+    <ul>
+      <li><%= bug.title %></li>
+  </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_project_path(@project) %>
+<%= link_to 'Add bug', project_bugs_path(@project) %>
+<%= link_to 'Back', projects_path %>
