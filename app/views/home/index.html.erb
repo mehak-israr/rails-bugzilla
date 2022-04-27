@@ -1,0 +1,9 @@
+<% if current_user %>
+  <p> You singin as <%=current_user.email %> </p>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <p>Your role is <%= current_user.role %> </p>
+<% else %>
+  <p>You are not signin </p>
+  <%=  link_to "Sign up", new_user_registration_path %>
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
