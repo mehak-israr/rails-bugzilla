@@ -20,9 +20,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
+<%= f.label :role %>
+  <%= f.select :role, User.roles.keys %>
   <div class="actions">
-    <%= f.submit "Sign up", data: {turbo:false} %>
+    <%= f.submit "Sign up"%>
   </div>
 <% end %>
 
