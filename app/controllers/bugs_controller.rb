@@ -1,6 +1,6 @@
 class BugsController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_project
+  before_action :set_project
   before_action :set_bug, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,7 +8,6 @@ class BugsController < ApplicationController
   end
 
    def show
-    @bug=Bug.find(params[:project_id])
   end
 
    def new
@@ -18,43 +17,42 @@ class BugsController < ApplicationController
   def create
     @bug=project.bugs.build(bug_params)
     if @bug.save
-      redirect_to project_bugs_path(@project)
+      redirect_to (@bug.project)
     else
       render :new
     end
   end
 
   def edit
-    @bug=Bug.find(params[:id])
   end
 
   def update
     @bug=Bug.find(params[:id])
     if @bug.update(bug_params)
-      redirect_to project_bug_path(@project)
+      redirect_to([@bug.project, @bug], notice: 'Bugtitle was successfully updated.')
     else
       render :edit
     end
   end
 
   def destroy
-    @bug=Bug.find(params[:id])
     @bug.destroy
-    redirect_to shark_bugs_path(@project)
+    redirect_to project_bug_url(@project)
   end
 
   private
   def bug_params
-    params.require(:bug).permit(:title, :description, :type, :status)
+    params.require(:bug).permit(:title, :deadline, :type, :status, :project_id)
   end
 
   private
-  def get_project
-    @project=Project.find(params[:project_id])
+  def set_project
+    @project=current_user.projects.find(params[:project_id])
   end
 
-private
+  private
   def set_bug
     @bug = @project.bugs.find(params[:id])
   end
+
 end

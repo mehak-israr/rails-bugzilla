@@ -1,16 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_project, only: %i[ show edit update destroy ]
 
   def index
    @projects = current_user.projects
   end
 
    def show
-    @project=Project.find(params[:id])
+    @bug= @project.bugs.build
   end
 
-   def new
-    @project=current_user.projects.build
+  def new
+    @project = current_user.projects.build
   end
 
   def create
@@ -45,5 +46,8 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name,:description)
   end
+ def set_project
+      @project = current_user.projects.find(params[:id])
+    end
 
 end
