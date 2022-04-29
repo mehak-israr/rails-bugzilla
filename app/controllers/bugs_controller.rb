@@ -25,6 +25,7 @@ class BugsController < ApplicationController
     end
   end
 
+
   def edit
   end
 
@@ -38,7 +39,7 @@ class BugsController < ApplicationController
 
   def destroy
     @bug.destroy
-    redirect_to project_bug_url(@project)
+    redirect_to @project
   end
 
   private

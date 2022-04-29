@@ -3,5 +3,5 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :bugs, dependent: :destroy
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end

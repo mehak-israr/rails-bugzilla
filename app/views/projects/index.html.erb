@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
+<h2 class = 'card-title d-flex justify-content-between'>
+<span>Projects</span>
+  <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
+</h2>
 
 <table>
   <thead>
@@ -26,6 +29,4 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Project', new_project_path %>
