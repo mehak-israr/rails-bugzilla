@@ -21,7 +21,7 @@
     <%= f.date_select :deadline, start_year: 2000, end_year: Time.now.year %>
   </div>
 
-  <div class="field">
+   <%= f.text_field :deadline%> <div class="field">
     <%= f.label :type %><br />
     <%= f.select :type, Bug::TYPE_OPTIONS %>
   </div>
