@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+# Bugs_migration
 class CreateBugs < ActiveRecord::Migration[5.2]
   def change
     create_table :bugs do |t|

@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b>Title</b>
   <%= @bug.title %>
 </p>
 
 <p>
-  <b>deadline</b>
+  <b>Deadline</b>
   <%= @bug.deadline %>
 </p>
 
 <p>
-  <b>Type</b>
+  <b>Type:</b>
   <%= @bug.type %>
 </p>
+
 <p>
-  <b>status</b>
+  <b>Status</b>
   <%= @bug.status %>
 </p>
-
 <p>
   <b>Project:</b>
   <%= @bug.project %>
@@ -26,4 +26,4 @@
 
 
 <%= link_to 'Edit', edit_project_bug_path(@bug.project, @bug) %> |
-<%= link_to 'Back', project_bug_path(@bug.project) %>
+<%= link_to 'Back', project_bugs_path(@bug.project) %>

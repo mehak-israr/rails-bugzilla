@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name</strong>
   <%= @project.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Description</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>User</strong>
   <%= @project.user %>
 </p>
 
@@ -19,21 +19,20 @@
 <%= link_to 'Back', projects_path %>
 <hr>
 
-<h1>New bug</h1>
+<h1>ADD new bug</h1>
 
-<%= render 'bug/form' %>
+<%= render 'bugs/form' %>
 
 <hr>
-<h1>Listing bugtitles</h1>
+<h1>Bugs List</h1>
 
 <table>
   <tr>
-    <th>title</th>
-    <th>deadline</th>
+    <th>Title</th>
+    <th>Deadline</th>
     <th>Type</th>
-    <th>status/th>
+    <th>Status</th>
     <th>Project</th>
-    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -45,9 +44,9 @@
     <td><%= bug.title %></td>
     <td><%= bug.deadline %></td>
     <td><%= bug.type %></td>
-     <td><%= bug.status %></td>
+    <td><%= bug.status %></td>
     <td><%= bug.project %></td>
-    <td><%= link_to 'Show', [bug.project, bug %></td>
+    <td><%= link_to 'Show', [bug.project, bug] %></td>
     <td><%= link_to 'Edit', edit_project_bug_path(bug.project, bug) %></td>
     <td><%= link_to 'Destroy', [bug.project, bug], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -57,4 +56,4 @@
 
 <br />
 
-<%= link_to 'New Bugtitle', new_project_bug_path(@project.id) %>
+<%= link_to 'New Bug', new_project_bug_path(@project.id) %>

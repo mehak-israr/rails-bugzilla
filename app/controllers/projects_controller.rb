@@ -1,13 +1,14 @@
+# Project_controller
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[show edit update destroy]
 
   def index
-   @projects = current_user.projects
+    @projects = current_user.projects
   end
 
-   def show
-    @bug= @project.bugs.build
+  def show
+    @bug = @project.bugs.build
   end
 
   def new
@@ -15,7 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project=current_user.projects.build(project_params)
+    @project = current_user.projects.build(project_params)
     if @project.save
       redirect_to projects_path
     else
@@ -24,11 +25,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project=Project.find(params[:id])
   end
 
   def update
-    @project=Project.find(params[:id])
     if @project.update(project_params)
       redirect_to projects_path
     else
@@ -37,17 +36,17 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project=Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
 
   private
-  def project_params
-    params.require(:project).permit(:name,:description)
-  end
- def set_project
-      @project = current_user.projects.find(params[:id])
-    end
 
+  def project_params
+    params.require(:project).permit(:name, :description)
+  end
+
+  def set_project
+    @project = current_user.projects.find(params[:id])
+  end
 end
